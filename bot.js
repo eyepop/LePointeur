@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("./config.json"); // Contains the prefix, and token!
+//const config = require("./config.json"); // Contains the prefix, and token!
+const prefix="+";
 const SQLite = require("better-sqlite3");
 const sql = new SQLite('./scores.sqlite');
 
@@ -37,9 +38,9 @@ client.on("message", message => {
     }
     client.setScore.run(score);
   }
-  if (message.content.indexOf(config.prefix) !== 0) return;
+  if (message.content.indexOf(prefix) !== 0) return;
 
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
   // Command-specific code here!
