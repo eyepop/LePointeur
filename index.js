@@ -3,7 +3,7 @@ var pool = require ('./clientpool.js');
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
-
+const channel = client.channels.cache.get('');
 prefix = '!'
  
 
@@ -50,8 +50,7 @@ client.on('message', message => {
 	if(message.content.startsWith(prefix+" donne ")){
 		var msg = message.content.split(" ");
 		console.log("bababa");
-const channel = client.channels.cache.get('<id>');
-		channel.send(msg[msg.length-1]);
+	message.reply(msg[msg.length-1]);
 	}
 		
 	}
