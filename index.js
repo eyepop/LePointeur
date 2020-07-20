@@ -57,7 +57,7 @@ client.on('guildMemberUpdate', (oldguy, newguy) => {
         });
     });
 
-
+});
 
 
  
