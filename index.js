@@ -14,6 +14,8 @@ client.on('ready', () => {
             client.query('create table if not exists users( \
                 id text primary key, \
                 name text, \
+		points double, \
+		triangle integer, \
                 count integer default 0)', (err, result) => {
                     //disconnent from database on error
                     done(err);
@@ -26,7 +28,7 @@ client.on('ready', () => {
 client.on('message', message => {
 
     //Not send by a bot and not a command
-    if(message.author.bot == false && (message.content.startsWith(prefix) == false) ){
+    if(!message.author.bot && !(message.content.startsWith(prefix)) ){
         //Connected to database
         pool.connect( (err, client, done) => {
             //Increment users count by 1
@@ -44,7 +46,11 @@ client.on('message', message => {
                 }
             });
         });
-    }
+    }else{
+	if(message.content.startsWith(prefix+" donne ")){
+		console.log("bababa");}
+	
+	}
 });
 
 client.on('guildMemberUpdate', (oldguy, newguy) => {
