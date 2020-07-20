@@ -4,6 +4,7 @@ const client = new Discord.Client();
 const prefix="+";
 const SQLite = require("better-sqlite3");
 const sql = new SQLite('./scores.sqlite');
+const PORT = process.env.PORT || 3000;
 
 client.on("ready", () => {
   // Check if the table "points" exists.
@@ -46,7 +47,7 @@ client.on("message", message => {
   if(command === "give") {
   // Limited to guild owner - adjust to your own preference!
   if(!message.author.id === message.guild.owner) return message.reply("You're not the boss of me, you can't do that!");
-
+	
   const user = message.mentions.users.first() || client.users.get(args[0]);
   if(!user) return message.reply("You must mention someone or give their ID!");
 
