@@ -6,7 +6,7 @@ const SQLite = require("better-sqlite3");
 const sql = new SQLite('./scores.sqlite');
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+bot.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
 });
 
