@@ -50,7 +50,8 @@ client.on('message', message => {
 	if(message.content.startsWith(prefix+" donne ")){
 		var msg = message.content.split(" ");
 		console.log("bababa");
-		client.send(msg[msg.length-1]);
+const channel = client.channels.cache.get('<id>');
+		channel.send(msg[msg.length-1]);
 	}
 		
 	}
