@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 //const config = require("./config.json"); // Contains the prefix, and token!
-const prefix="+";
+const prefix="Pointeur";
 const SQLite = require("better-sqlite3");
 const sql = new SQLite('./scores.sqlite');
 
@@ -44,14 +44,14 @@ client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  if(command === "give") {
+  if(command === "donne") {
   // Limited to guild owner - adjust to your own preference!
-  if(!message.author.id === message.guild.owner) return message.reply("You're not the boss of me, you can't do that!");
+  if(!message.author.id === message.guild.owner) return message.reply("AAAAAAHHHHH ! Non non non ...");
 	
-  const user = message.mentions.users.first() || client.users.get(args[0]);
+  const user = message.mentions.users.first() || client.users.get(args[1]);
   if(!user) return message.reply("You must mention someone or give their ID!");
 
-  const pointsToAdd = parseInt(args[1], 10);
+  const pointsToAdd = parseInt(args[0], 10);
   if(!pointsToAdd) return message.reply("You didn't tell me how many points to give...")
 
   // Get their current points.
