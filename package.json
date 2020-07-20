@@ -20,7 +20,8 @@
 
 		"request": "2.81.0",
 		
-		"better-sqlite3": "7.1.0"
+		"better-sqlite3": "7.1.0",
+		"enmap": "4.0"
 
 	}
 
