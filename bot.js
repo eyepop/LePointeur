@@ -31,11 +31,11 @@ client.on("message", message => {
     if (!score) {
       score = { id: `${message.guild.id}-${message.author.id}`, user: message.author.id, guild: message.guild.id, points: 0, level: 1 }
     }
-    score.points++;
+    //score.points++;
     const curLevel = Math.floor(0.1 * Math.sqrt(score.points));
     if(score.level < curLevel) {
       score.level++;
-      message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
+      //message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
     }
     client.setScore.run(score);
   }
@@ -46,9 +46,9 @@ client.on("message", message => {
 
   if(command === "donne") {
   // Limited to guild owner - adjust to your own preference!
-  if(!message.author.id === message.guild.owner) return message.reply("You're not the boss of me, you can't do that!");
-	
-  const user = message.mentions.users.first() || client.users.get(args[1]);
+  if(!message.author.id === message.guild.owner) return message.reply("Non non non !!! Tu n'es pas mon maître...");
+
+  const user = message.mentions.users.first() || client.users.cache.get(args[1]);
   if(!user) return message.reply("You must mention someone or give their ID!");
 
   const pointsToAdd = parseInt(args[0], 10);
@@ -69,13 +69,13 @@ client.on("message", message => {
   // And we save it!
   client.setScore.run(userscore);
 
-  return message.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
+  return message.channel.send(`${user.tag} a reçu ${pointsToAdd} points et totalise désormais ${userscore.points} points.`);
 }
 
 if(command === "leaderboard") {
   const top10 = sql.prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 10;").all(message.guild.id);
 
-    // Now shake it and show it! (as a nice embed, too!)
+// Now shake it and show it! (as a nice embed, too!)
   const embed = new Discord.MessageEmbed()
     .setTitle("Leaderboard")
     .setAuthor(client.user.username, client.user.avatarURL)
