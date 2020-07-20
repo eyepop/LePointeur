@@ -6,6 +6,10 @@ const SQLite = require("better-sqlite3");
 const sql = new SQLite('./scores.sqlite');
 const PORT = process.env.PORT || 3000;
 
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
+
 client.on("ready", () => {
   // Check if the table "points" exists.
   const table = sql.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'scores';").get();
