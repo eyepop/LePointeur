@@ -1,3 +1,4 @@
+
 const commando = require('discord.js-commando');
 var pool = require ('./clientpool.js');
 
@@ -6,7 +7,7 @@ prefix = '!'
 //Connect to discord server
 const bot = new commando.Client({
     commandPrefix: prefix,
-    owner:['YourID']
+    owner:['Robière#7240']
 });
 
 //Register Commands
@@ -14,7 +15,7 @@ bot.registry.registerGroup('count', 'count');
 bot.registry.registerGroup('math', 'math');
 bot.registry.registerDefaults();
 bot.registry.registerCommandsIn(__dirname + '/commands')
-bot.login('MjkxMTA5NjgyNjA3ODE2NzA2.C6ksrw.WpEcreIwJcaI5dMdk5_KPVRu59k');
+bot.login('taAdGSaeG9W1FMgwz2_XQhBscqJ51YaI');
 
 
 
@@ -66,9 +67,4 @@ bot.on('guildMemberUpdate', (oldguy, newguy) => {
 
         });
     });
-
-
-
-
-
 });
