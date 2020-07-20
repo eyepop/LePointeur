@@ -49,8 +49,23 @@ client.on('message', message => {
     }else{
 	if(message.content.startsWith(prefix+" donne ")){
 		var msg = message.content.split(" ");
-		console.log("bababa");
-	message.reply(msg[msg.length-1]);
+		for(var i=0;i<msg.length;i++){
+			var nb=0.0;
+			var currency="point"
+			var dest=""
+			if(msg[i]=="à" || msg[i]=="a" ){
+				if(i+1<msg.length){
+					dest=msg[i+1];
+					i++;
+				}else if(msg[i]=="point" || msg[i]=="points" || msg[i]=="pts" || msg[i]=="pt"){
+					if(i>0){
+						nb=parseFloat(msg[i-1]);
+					}
+				}
+			}
+		}
+		
+		message.reply("Ok, donnons "+nb+" "+currency+"s à "+dest+"...");
 	}
 		
 	}
