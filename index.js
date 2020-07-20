@@ -48,8 +48,11 @@ client.on('message', message => {
         });
     }else{
 	if(message.content.startsWith(prefix+" donne ")){
-		console.log("bababa");}
-	
+		var msg = message.content.split(" ");
+		console.log("bababa");
+		channel.send(msg[msg.length-1]);
+	}
+		
 	}
 });
 
