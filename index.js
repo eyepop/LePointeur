@@ -1,31 +1,32 @@
-
-const commando = require('discord.js-commando');
 var pool = require ('./clientpool.js');
 
+const Discord = require('discord.js');
+
+const client = new Discord.Client();
+
 prefix = '!'
+ 
 
-//Connect to discord server
-const bot = new commando.Client({
-    commandPrefix: prefix,
-    owner:['Robière#7240']
+client.on('ready', () => {
+
+    console.log('I am ready!');
+
 });
 
+ 
 
-bot.login(process.env.BOT_TOKEN);
+client.on('message', message => {
 
+    if (message.content === prefix) {
 
+       message.reply('pong');
 
-//Bot loads up
-bot.on('ready', () => {
-    console.log('The bot is ready to go');
-    pool.connect( (err, client, done) => {
-            client.query('create table if not exists users( \
-                id text primary key, \
-                name text, \
-                count integer default 0)', (err, result) => {
-                    //disconnent from database on error
-                    done(err);
-            });
-    });
+       }
+
 });
 
+ 
+
+// THIS  MUST  BE  THIS  WAY
+
+client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
