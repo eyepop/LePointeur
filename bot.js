@@ -46,7 +46,7 @@ client.on("message", message => {
 
   if(command === "donne") {
   // Limited to guild owner - adjust to your own preference!
-  if(!message.author.id === message.guild.owner) return message.reply("AAAAAAHHHHH ! Non non non ...");
+  if(!message.author.id === message.guild.owner) return message.reply("You're not the boss of me, you can't do that!");
 	
   const user = message.mentions.users.first() || client.users.get(args[1]);
   if(!user) return message.reply("You must mention someone or give their ID!");
