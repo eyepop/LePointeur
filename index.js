@@ -47,6 +47,17 @@ client.on('message', message => {
     }
 });
 
+client.on('guildMemberUpdate', (oldguy, newguy) => {
+    pool.connect( (err, client, done) => {
+        //Update display name to new nickname
+        client.query('update users set name = $1 where id = $2',
+        [newguy.displayName, newguy.user.id], (err, result) => {
+            done(err);
+		console.log("ahah");
+        });
+    });
+
+
 
 
  
