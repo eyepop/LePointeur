@@ -10,7 +10,8 @@ const bot = new commando.Client({
     owner:['Robière#7240']
 });
 
-bot.login('NzM0Nzg3NTQxMjE0OTUzNTIy.XxYHMg.c_FqC77qBZV5kZQwnkjGTH2AAJg');
+
+bot.login(process.env.BOT_TOKEN);
 
 
 
