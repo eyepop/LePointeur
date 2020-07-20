@@ -25,13 +25,29 @@ client.on('ready', () => {
 
 client.on('message', message => {
 
-    if (message.content === prefix) {
+    //Not send by a bot and not a command
+    if(message.author.bot == false && (message.content.startsWith(prefix) == false) ){
+        //Connected to database
+        pool.connect( (err, client, done) => {
+            //Increment users count by 1
+            client.query('update users set count = count + 1 where id = $1',
+            [message.author.id], (err, result) => {
 
-       message.reply('pong');
-
-       }
-
+                done(err);
+                //If user not in the database add them
+                if (result.rowCount == 0){
+                    client.query('insert into users (id, name, count) values ($1, $2, 1)',
+                    [message.author.id, message.author.username], (err, result) => {
+                        done(err);
+                        console.log(result.rowCount);
+                    });
+                }
+            });
+        });
+    }
 });
+
+
 
  
 
