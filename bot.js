@@ -4,11 +4,7 @@ const client = new Discord.Client();
 const prefix="+";
 const SQLite = require("better-sqlite3");
 const sql = new SQLite('./scores.sqlite');
-const PORT = process.env.PORT || 3000;
 
-bot.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
-});
 
 client.on("ready", () => {
   // Check if the table "points" exists.
