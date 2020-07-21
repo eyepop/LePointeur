@@ -9,5 +9,5 @@ client.channels.cache.forEach(logMapElements);
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function logMapElements(value, key, map) {
-  console.log(`m[${key}] = ${value}`);
+  console.log('m['+key+'] = '+value);
 }
