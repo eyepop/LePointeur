@@ -23,8 +23,20 @@ client.on('ready', () => {
 	});
 });
 
+async run(message){
+	pool.connect( (err, client, done) => {
+		var res = await client.query("SELECT * FROM users");
+		res.rows.forEach(row=>{
+			console.log(row);
+		});
+		await client.end();
 
 
+	});
+
+
+
+}
 client.on('message', message => {
 
 	//Not send by a bot and not a command
@@ -47,15 +59,6 @@ client.on('message', message => {
 				});
 		});
 	}else{
-		pool.connect( (err, client, done) => {
-			var myquery = await client.query('select (name, count) from  users order by count desc');
-			var text="okok";
-			res.rows.forEach(row=>{
-				console.log(row);
-			});
-			await client.end();
-
-		});
 
 
 		if(message.content.startsWith(prefix+" donne ")){
