@@ -7,15 +7,12 @@ client.on('ready', () => {
 	const chanGen=client.channels.cache.get("690970175956189209");
 
 	chanGen.members.forEach(member => initPoints(member.id,0,chanPoints));
-
-
-	chanPoints.send("okok");
 	wipeChan(chanPoints);
 });
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function initPoints(id,nb,chan){
-	chan.send("{id : "+id+", points :"+nb+"}");
+	chan.send("{id : "+id+"; points :"+nb+"}");
 }
 
 function wipeChan(chan){
