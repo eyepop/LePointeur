@@ -49,11 +49,12 @@ client.on('message', message => {
 	}else{
 
 		if(message.content.startsWith(prefix+" status")){
-		pool.connect( (err, client, done) => {
-			var myquery = client.query('select (name, count) from  users order by count desc');
-			console.log(myquery);
-
-		});
+			pool.connect( (err, client, done) => {
+				var myquery = client.query('select (name, count) from  users order by count desc');
+				myquery.on('end', (result) => {			
+					console.log(myquery);
+				})
+			});
 		}
 		if(message.content.startsWith(prefix+" donne ")){
 			var nb=0.0;
