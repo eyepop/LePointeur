@@ -20,8 +20,12 @@ client.on('ready', () => {
 				//disconnent from database on error
 				done(err);
 			});
+			console.log(result);
 	});
 });
+
+
+
 
 client.on('message', message => {
 	pool.connect( (err, client, done) => {
@@ -30,13 +34,7 @@ client.on('message', message => {
 				console.log(result);
 				done(err);
 			});
-
 	});
-});
-
-
-
-client.on('message', message => {
 
 	//Not send by a bot and not a command
 	if(!message.author.bot && !(message.content.startsWith(prefix)) ){
