@@ -17,10 +17,10 @@ function initPoints(bot,id,username,nb,chan){
 	}
 }
 
-function userInChan(user,chan){
+function userInChan(id,chan){
 	chan.messages.fetch()
 		.then(messages => {
-			messages.forEach(msg => msg.delete());
+			messages.forEach(msg => parseMsg(msg).id);
 		});
 }
 
