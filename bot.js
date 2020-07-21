@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 client.on('ready', () => {
-	client.channels.cache.forEach(logMapElements);
+	//client.channels.cache.forEach(logMapElements);
 	const chanPoints=client.channels.cache.get("735193960783413351");
 	const chanGen=client.channels.cache.get("690970175956189209");
 
