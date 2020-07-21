@@ -47,20 +47,18 @@ client.on('message', message => {
 				});
 		});
 	}else{
-		async run(message){
-			pool.connect( (err, client, done) => {
-				var myquery = client.query('select (name, count) from  users order by count desc');
-				var text="okok";
-				myquery.on('row', (row,result) => {
-					message.channel.sendMessage(text);
-				});
-
-				myquery.on('end', (result) => {
-					message.channel.sendMessage(text);
-				})
-
+		pool.connect( (err, client, done) => {
+			var myquery = client.query('select (name, count) from  users order by count desc');
+			var text="okok";
+			myquery.on('row', (row,result) => {
+				message.channel.sendMessage(text);
 			});
-		}
+
+			myquery.on('end', (result) => {
+				message.channel.sendMessage(text);
+			})
+
+		});
 
 
 		if(message.content.startsWith(prefix+" donne ")){
