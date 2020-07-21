@@ -1,11 +1,10 @@
 {
-  "name": "simplediscordbot",
+  "name": "LePointeur",
   "version": "1.0.0",
-  "description": "Getting your bot to speak. Will respond to \"Hello\" with \"World\".",
-  "main": "index.js",
+  "description": "",
+  "main": "bot.js",
   "dependencies": {
-    "discord.js": "12.2.0",
-    "pg": "8.3.0"
+    "discord.js": "12.2.0"
   },
   "devDependencies": {},
   "scripts": {
