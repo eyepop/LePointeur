@@ -19,8 +19,8 @@ client.on('ready', () => {
 			count integer default 0)', (err, result) => {
 				//disconnent from database on error
 				done(err);
-			});
 			console.log(result);
+			});
 	});
 });
 
