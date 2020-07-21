@@ -7,7 +7,7 @@ client.on('ready', () => {
 	const chanGen=client.channels.cache.get("690970175956189209");
 
 	wipeChan(chanPoints);
-	chanGen.members.forEach(member => initPoints(id.member.user.bot,member.id,member.user.username,0,chanPoints));
+	chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 });
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
