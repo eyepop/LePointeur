@@ -9,6 +9,22 @@ client.on('ready', () => {
 	//wipeChan(chanPoints);
 	chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 });
+
+client.on('message', msg => {
+	var dest="";
+	if (msg.startsWith('!donne ')) {
+		var m=msg.split(" ");
+		for(var i=0;i<m.length;i++){
+			if(m[i]==="à"||m[i]==="a"){
+				if(i+1<m.length){
+					dest=m[i+1];
+				}
+			}
+		}
+	}
+});
+
+
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function initPoints(bot,id,username,nb,chan){
