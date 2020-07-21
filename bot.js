@@ -12,12 +12,18 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 	var dest="";
+	var nb=0.0;
 	if (msg.startsWith('!donne ')) {
 		var m=msg.split(" ");
 		for(var i=0;i<m.length;i++){
 			if(m[i]==="à"||m[i]==="a"){
 				if(i+1<m.length){
 					dest=m[i+1];
+				}
+			}
+			if(m[i]==="points"||m[i]==="pts"){
+				if(i-1>0){
+					nb=m[i-1];
 				}
 			}
 		}
@@ -27,8 +33,14 @@ client.on('message', msg => {
 
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
-function initPoints(bot,id,username,nb,chan){
+function addPoints(bot,id,username,nb,chan){
 	if(!bot && userInChan(id,chan)){
+		chan.send("{ id : "+id+"; username : "+username+" ; points :"+nb+"}");
+	}
+}
+
+function initPoints(bot,id,username,nb,chan){
+	if(!bot && !userInChan(id,chan)){
 		chan.send("{ id : "+id+"; username : "+username+" ; points :"+nb+"}");
 	}
 }
