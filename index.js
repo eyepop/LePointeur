@@ -23,7 +23,7 @@ client.on('ready', () => {
 	});
 });
 
-async queryquery(message){
+async function run(message){
 	pool.connect( (err, client, done) => {
 		var res = await client.query("SELECT * FROM users");
 		res.rows.forEach(row=>{
