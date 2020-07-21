@@ -24,16 +24,16 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-pool.connect( (err, client, done) => {
-	//Increment users count by 1
-	client.query('select * from users',
-		[message.author.id], (err, result) => {
+	pool.connect( (err, client, done) => {
+		//Increment users count by 1
+		client.query('select * from users',
+			[message.author.id], (err, result) => {
 
-			done(err);
-			console.log(result);
-		});
+				done(err);
+				console.log(result.rows);
+			});
 
-});
+	});
 });
 
 
