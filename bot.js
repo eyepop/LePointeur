@@ -14,7 +14,7 @@ client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 function wipeChan(chan){
 	chan.messages.fetch({limit: 1})
   .then(messages => {
-    messages.forEach(msg).delete();
+    messages.forEach(msg => msg.delete());
   });
 
 }
