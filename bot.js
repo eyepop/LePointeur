@@ -51,9 +51,9 @@ function userInChan(id,chan){
 		.then(messages => {
 			messages.forEach(function(msg){ 
 				if(!isUserInChan){
-					isUserInChan=(parseMsg(msg).id===id));
+					isUserInChan=(parseMsg(msg).id===id);
 				}
-			}
+			});
 		});
 	return isUserInChan;
 }
