@@ -48,15 +48,12 @@ client.on('message', message => {
 		});
 	}else{
 		pool.connect( (err, client, done) => {
-			var myquery = client.query('select (name, count) from  users order by count desc');
+			var myquery = await client.query('select (name, count) from  users order by count desc');
 			var text="okok";
-			myquery.on('row', (row,result) => {
-				message.channel.sendMessage(text);
+			res.rows.forEach(row=>{
+				console.log(row);
 			});
-
-			myquery.on('end', (result) => {
-				message.channel.sendMessage(text);
-			})
+			await client.end();
 
 		});
 
