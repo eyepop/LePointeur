@@ -23,20 +23,18 @@ client.on('ready', () => {
 	});
 });
 
-async function run(message){
 	pool.connect( (err, client, done) => {
-		var res = await client.query("SELECT * FROM users");
+		var res = client.query("SELECT * FROM users");
 		res.rows.forEach(row=>{
 			console.log(row);
 		});
-		await client.end();
+		client.end();
 
 
 	});
 
 
 
-}
 client.on('message', message => {
 
 	//Not send by a bot and not a command
