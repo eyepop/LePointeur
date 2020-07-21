@@ -14,8 +14,8 @@ client.on('ready', () => {
 		client.query('create table if not exists users( \
 			id text primary key, \
 			name text, \
-			points double, \
-			triangle integer, \
+			points double default 0.0, \
+			triangle integer default 1, \
 			count integer default 0)', (err, result) => {
 				//disconnent from database on error
 				done(err);
@@ -69,10 +69,18 @@ client.on('message', message => {
 
 				}
 			}
+			if(dest!="" && nb!=0.0){
+				pool.connect( (err, client, done) => {
+					//Increment users count by 1
+					client.query('update users set points = points + '+nb+' where id = $1',
+						[dest], (err, result) => {
 
-			message.reply("Ok, donnons "+nb+" "+currency+"s à "+dest+"...");
+							done(err);
+						});
+				});
+				message.reply("Ok, donnons "+nb+" "+currency+"s à "+dest+"...");
+			}
 		}
-
 	}
 });
 
