@@ -28,7 +28,7 @@ client.on('message', message => {
 		client.query('select * from users',
 			[message.author.id], (err, result) => {
 
-				console.log(result.rows);
+				console.log(result);
 				done(err);
 			});
 
