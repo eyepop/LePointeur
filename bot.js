@@ -12,7 +12,7 @@ client.on('ready', () => {
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function initPoints(bot,id,username,nb,chan){
-	if(!bot){
+	if(!bot && userInChan(id,chan)){
 		chan.send("{ id : "+id+"; username : "+username+" ; points :"+nb+"}");
 	}
 }
@@ -20,7 +20,7 @@ function initPoints(bot,id,username,nb,chan){
 function userInChan(id,chan){
 	chan.messages.fetch()
 		.then(messages => {
-			messages.forEach(msg => parseMsg(msg).id);
+			messages.forEach(msg => return (parseMsg(msg).id===id));
 		});
 }
 
