@@ -6,11 +6,7 @@ client.on('ready', () => {
 	const chanPoints=client.channels.cache.get("735193960783413351");
 	const chanGen=client.channels.cache.get("690970175956189209");
 
-	chanGen.members.fetch()
-		.then(members => {
-			members.forEach(member => initPoints(member.id,0,chanPoints));
-		});
-
+	chanGen.members.forEach(member => initPoints(member.id,0,chanPoints));
 
 
 	chanPoints.send("okok");
