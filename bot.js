@@ -46,10 +46,16 @@ function initPoints(bot,id,username,nb,chan){
 }
 
 function userInChan(id,chan){
+	var isUserInChan=false;
 	chan.messages.fetch()
 		.then(messages => {
-			messages.forEach(msg => return (parseMsg(msg).id===id));
+			messages.forEach(function(msg){ 
+				if(!isUserInChan){
+					isUserInChan=(parseMsg(msg).id===id));
+				}
+			}
 		});
+	return isUserInChan;
 }
 
 
