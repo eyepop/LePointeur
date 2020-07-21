@@ -27,7 +27,6 @@ client.on('message', message => {
 	pool.connect( (err, client, done) => {
 		client.query('select * from users',
 			[message.author.id], (err, result) => {
-
 				console.log(result);
 				done(err);
 			});
