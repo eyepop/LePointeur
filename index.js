@@ -23,15 +23,16 @@ client.on('ready', () => {
 	});
 });
 
-	pool.connect( (err, client, done) => {
-		var res = client.query("SELECT * FROM users");
-		res.rows.forEach(row=>{
-			console.log(row);
+pool.connect( (err, client, done) => {
+	//Increment users count by 1
+	client.query('update users set count = count + 1 where id = $1',
+		[message.author.id], (err, result) => {
+
+			done(err);
+			console.log(result);
 		});
-		client.end();
 
-
-	});
+});
 
 
 
