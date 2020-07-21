@@ -50,6 +50,7 @@ client.on('message', message => {
 	if(message.content.startsWith(prefix+" donne ")){
 		var msg = message.content.split(" ");
 		for(var i=0;i<msg.length;i++){
+			console.log(msg[i]);
 			var nb=0.0;
 			var currency="point"
 			var dest=""
