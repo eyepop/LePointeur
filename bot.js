@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-client.channels.cache.keys().forEach(logMapElements);
+client.channels.cache.forEach(logMapElements);
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function logMapElements(value, key, map) {
