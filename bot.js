@@ -12,7 +12,9 @@ client.on('ready', () => {
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function initPoints(bot,id,username,nb,chan){
-	if(!bot)chan.send("{ id : "+id+"; username : "+username+" ; points :"+nb+"}");
+	if(!bot){
+		chan.send("{ id : "+id+"; username : "+username+" ; points :"+nb+"}");
+	}
 }
 
 function wipeChan(chan){
