@@ -54,11 +54,11 @@ client.on('message', message => {
 			var nb=0.0;
 			var currency="point"
 			var dest=""
-			if(msg[i]=="à" || msg[i]=="a" ){
+			if(msg[i]==="à" || msg[i]==="a" ){
 				if(i+1<msg.length){
 					dest=msg[i+1];
 					i++;
-				}else if(msg[i]=="point" || msg[i]=="points" || msg[i]=="pts" || msg[i]=="pt"){
+				}else if(msg[i]==="point" || msg[i]==="points" || msg[i]==="pts" || msg[i]==="pt"){
 					if(i>0){
 						console.log(msg[i-1]);
 						nb=parseFloat(msg[i-1]);
