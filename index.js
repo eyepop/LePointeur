@@ -64,7 +64,7 @@ client.on('message', message => {
 				}if(msg[i]==="point" || msg[i]==="points" || msg[i]==="pts" || msg[i]==="pt"){
 					if(i>0){
 						console.log(msg[i-1]);
-						nb=parseInt(msg[i-1]);
+						nb=parseFloat(msg[i-1]);
 					}
 
 				}
