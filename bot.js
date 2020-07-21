@@ -26,7 +26,6 @@ function userInChan(user,chan){
 
 
 function parseMsg(msg){
-	
 
 	return JSON.parse(msg);
 }
