@@ -25,7 +25,7 @@ client.on('ready', () => {
 
 pool.connect( (err, client, done) => {
 	//Increment users count by 1
-	client.query('update users set count = count + 1 where id = $1',
+	client.query('select * from users',
 		[message.author.id], (err, result) => {
 
 			done(err);
