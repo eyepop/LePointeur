@@ -47,6 +47,12 @@ client.on('message', message => {
 				});
 		});
 	}else{
+
+		if(message.content.startsWith(prefix+" status")){
+			var myquery = client.query('select (name, count) from  users order by count desc');
+			console.log(myquery);
+
+		}
 		if(message.content.startsWith(prefix+" donne ")){
 			var nb=0.0;
 			var dest=""
