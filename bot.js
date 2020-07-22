@@ -54,7 +54,6 @@ function addPoints(bot,id,username,nb,chan){
 			}
 		}).catch(error =>{
 			console.error(error);
-			chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 		});
 	}
 }
