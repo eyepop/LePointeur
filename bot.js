@@ -6,7 +6,7 @@ client.on('ready', () => {
 	const chanPoints=client.channels.cache.get("735193960783413351");
 	const chanGen=client.channels.cache.get("690970175956189209");
 	const chanTest=client.channels.cache.get("692075989026734090");
-	//wipeChan(chanPoints);
+	wipeChan(chanPoints);
 	console.log("empty "+chanPoints.messages.cache.some());
 	if(chanPoints.lastMessage==null){
 		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
