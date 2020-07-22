@@ -51,7 +51,7 @@ function addPoints(bot,id,username,nb,chan){
 			messages.forEach(function(message){ 
 				if(message.content.includes('{"id" : "'+id+'",')){
 					msgEdit=message;
-					console.log(message.content);
+					console.log(msgEdit.content);
 				}
 			});
 		}).catch(error =>{
