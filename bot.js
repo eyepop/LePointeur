@@ -67,6 +67,7 @@ function isChanEmpty(chan){
 	chan.messages.fetch()
 		.then(messages => cpt=cpt+1)
 		.catch(console.error);
+	console.log(cpt);
 	return (cpt===0);
 }
 
