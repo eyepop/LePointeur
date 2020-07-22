@@ -36,7 +36,6 @@ client.on('message', msg => {
 	}
 });
 
-client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function addPoints(bot,id,username,nb,chan){
 	if(!bot){
@@ -104,3 +103,4 @@ function wipeChan(chan){
 function logMapElements(value, key, map) {
 	console.log('m['+key+'] = '+value);
 }
+client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
