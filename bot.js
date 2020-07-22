@@ -11,7 +11,7 @@ client.on('ready', () => {
 			console.log(message.get(chan.lastMessageID).content);
 		}));
 	}catch(error){
-
+		console.error(error);
 		if(countMessages(chanPoints)==0){
 			chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 		}
