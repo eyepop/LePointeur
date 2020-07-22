@@ -44,13 +44,14 @@ client.on('message', msg => {
 
 
 function addPoints(bot,id,username,nb,chan){
+	var d=nb;
 	if(!bot){
 
 		var msgEdit;
 		chan.messages.fetch().then(messages => {
 			messages.forEach(function(message){ 
 				if(message.content.includes('{"id" : "'+id+'",')){
-					console.log("nb "+nb);
+					console.log("nb "+d);
 					var nb =nb+parseFloat(parseMsg(message.content).scores.points);
 					console.log("points "+parseMsg(message.content).scores['points']);
 					const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :"'+nb+'"}}';
@@ -61,6 +62,7 @@ function addPoints(bot,id,username,nb,chan){
 		}).catch(error =>{
 			console.error(error);
 		});
+
 
 	}
 }
