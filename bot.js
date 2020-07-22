@@ -64,7 +64,10 @@ function initPoints(bot,id,username,nb,chan){
 
 function countMessages(chan){
 	var nbMessages=0;
-	chan.messages.fetch().then(nbMessages+=1);
+	chan.messages.fetch().then(nbMessages=);
+	chan.messages.fetch().then((fetchedChannel) => {
+		nbMessages=fetchedChannel.messages.size; 
+	});
 	return nbMessages;
 }
 
