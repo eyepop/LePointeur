@@ -6,7 +6,7 @@ client.on('ready', () => {
 	const chanPoints=client.channels.cache.get("735193960783413351");
 	const chanGen=client.channels.cache.get("690970175956189209");
 
-	//wipeChan(chanPoints);
+	wipeChan(chanPoints);
 	chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 });
 
@@ -30,18 +30,20 @@ client.on('message', msg => {
 	}
 });
 
-const jsonex='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function addPoints(bot,id,username,nb,chan){
 	if(!bot && userInChan(id,chan)){
-		chan.send("{ id : "+id+"; username : "+username+" ; points :"+nb+"}");
+
+		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
+		chan.send(jsonForm);
 	}
 }
 
 function initPoints(bot,id,username,nb,chan){
 	if(!bot && !userInChan(id,chan)){
-		chan.send("{ id : "+id+"; username : "+username+" ; points :"+nb+"}");
+		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
+		chan.send(jsonForm);
 	}
 }
 
