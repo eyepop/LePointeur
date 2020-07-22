@@ -7,7 +7,7 @@ client.on('ready', () => {
 	const chanGen=client.channels.cache.get("690970175956189209");
 	const chanTest=client.channels.cache.get("692075989026734090");
 	//wipeChan(chanPoints);
-	console.log("empty "+isChanEmpty(chanPoints));
+	console.log("empty "+chanPoints.messages.cache.some());
 	if(chanPoints.lastMessage==null){
 		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 	}
@@ -43,7 +43,7 @@ function addPoints(bot,id,username,nb,chan){
 	if(!bot){
 
 		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
-		chan.fetchMessages().then(msgs => { // Get messages to check
+		chan.messages.fetch().then(msgs => { // Get messages to check
 			var msgEdit = msgs.filter(msgss => msgss.content.contains('"id" : "'+id+'"')) // Finds all messages with 'check'
 			parseMsg(msgEdit).scores.points+=nb;
 			if(msgEdit!=null){
@@ -63,11 +63,7 @@ function initPoints(bot,id,username,nb,chan){
 }
 
 function isChanEmpty(chan){
-	var cpt=0;
-	chan.messages.fetch()
-		.then(messages => cpt=cpt+1)
-		.catch(console.error);
-	console.log(cpt);
+	chan.messages.some();
 	return (cpt===0);
 }
 
