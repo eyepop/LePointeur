@@ -29,7 +29,7 @@ client.on('message', msg => {
 			console.log(m[1]);
 			if(m[1].startsWith("<@!")){
 				var id=m[1].replace("<","").replace(">","").replace("@","").replace("!","");	
-				getPoints(id,msg);			
+				getPoints(chanPoints,id,msg);			
 			}
 		}
 	}
@@ -57,7 +57,7 @@ client.on('message', msg => {
 
 
 
-function getPoints(id,msg){
+function getPoints(chan,id,msg){
 	var msgEdit;
 	chan.messages.fetch().then(messages => {
 		messages.forEach(function(message){
