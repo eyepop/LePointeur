@@ -46,16 +46,19 @@ function addPoints(bot,id,username,nb,chan){
 	if(!bot){
 
 		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
-
+		var msgEdit;
 		chan.messages.fetch().then(messages => {
 			messages.forEach(function(message){ 
 				if(message.content.includes('{"id" : "'+id+'",')){
+					msgEdit=message;
 					console.log(message.content);
 				}
 			});
 		}).catch(error =>{
 			console.error(error);
 		});
+		msgEdit.edit(jsonForm);
+
 	}
 }
 
