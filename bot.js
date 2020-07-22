@@ -9,10 +9,10 @@ client.on('ready', () => {
 	console.log("C'est parti !!!");
 	console.log(chanPoints.messages.fetch({ limit: 1 }).then(message => {
 		console.log(message.get(chanPoints.lastMessageID).content);
-	}).catch(error){
+	}).catch(error =>{
 		console.error(error);
 		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
-	});
+	}));
 	console.log("okay ?");
 }
 
