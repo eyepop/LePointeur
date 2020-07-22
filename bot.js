@@ -56,9 +56,7 @@ function addPoints(bot,id,username,nb,chan){
 				msgEdit.edit(jsonForm);
 			}
 			console.log(jsonForm);
-		}).catch(error){
-		}
-		;	
+		}).catch(error => console.log(error));	
 	}
 }
 
