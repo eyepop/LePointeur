@@ -30,7 +30,7 @@ client.on('message', msg => {
 	}
 });
 
-
+const jsonex="{ id : 172348173166051328; username : Robière ; points :0}";
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function addPoints(bot,id,username,nb,chan){
@@ -61,7 +61,8 @@ function userInChan(id,chan){
 
 function parseMsg(msg){
 
-	return JSON.parse(msg);
+	//return JSON.parse(msg);
+	return JSON.parse(jsonex);
 }
 
 function wipeChan(chan){
