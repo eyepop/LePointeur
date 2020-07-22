@@ -29,7 +29,7 @@ client.on('message', msg => {
 		}
 		var id=dest.replace("<","").replace(">","").replace("@","").replace("!","");
 		msg.reply(nb+"->"+dest.replace("<","").replace(">","").replace("@","").replace("!",""));
-		addPoints(msg.author.bot,id,client.fetchUser(id).username,nb,chanPoints);
+		addPoints(msg.author.bot,id,client.user.fetch(id).username,nb,chanPoints);
 	}
 });
 
