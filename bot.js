@@ -13,6 +13,7 @@ client.on('ready', () => {
 client.on('message', msg => {
 	var dest="";
 	var nb=0.0;
+	const chanPoints=client.channels.cache.get("735193960783413351");
 	if (msg.content.startsWith('!donne ')) {
 		var m=msg.content.split(" ");
 		for(var i=0;i<m.length;i++){
