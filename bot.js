@@ -30,7 +30,7 @@ client.on('message', msg => {
 	}
 });
 
-const jsonex='{"id" : "172348173166051328", "username" : "Robière" , "scores":{"points" :0}}';
+const jsonex='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function addPoints(bot,id,username,nb,chan){
