@@ -17,9 +17,9 @@ client.on('ready', () => {
 
 });
 
+var nb=0.0;
+var dest="";
 client.on('message', msg => {
-	var dest="";
-	var nb=0.0;
 	const chanPoints=client.channels.cache.get("735193960783413351");
 	if (msg.content.startsWith('!donne ')) {
 		var m=msg.content.split(" ");
@@ -51,7 +51,7 @@ function addPoints(bot,id,username,nb,chan){
 			messages.forEach(function(message){ 
 				if(message.content.includes('{"id" : "'+id+'",')){
 					console.log("nb "+nb);
-					var nb =parseFloat(nb)+parseFloat(parseMsg(message.content).scores.points);
+					var nb =nb+parseFloat(parseMsg(message.content).scores.points);
 					console.log("points "+parseMsg(message.content).scores['points']);
 					const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :"'+nb+'"}}';
 					console.log(message.content);
