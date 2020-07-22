@@ -27,7 +27,7 @@ client.on('message', msg => {
 				}
 			}
 		}
-	msg.reply(nb+"->"+dest);
+	msg.reply(nb+"->"+dest.replace("<",""));
 	console.log(nb+"->"+dest.replace("/[<!>]/gi",""));
 	}
 });
