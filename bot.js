@@ -48,14 +48,14 @@ function addPoints(bot,id,username,nb,chan){
 		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
 
 		chan.messages.fetch().then(messages => {
-				messages.forEach(function(message){ 
-					if(message.content.includes("id")){
-						console.log(message.content);
-					}
-				});
-			}).catch(error =>{
-				console.error(error);
+			messages.forEach(function(message){ 
+				if(message.content.includes("id")){
+					console.log(message.content);
+				}
 			});
+		}).catch(error =>{
+			console.error(error);
+		});
 	}
 }
 
