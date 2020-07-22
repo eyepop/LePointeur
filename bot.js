@@ -7,7 +7,7 @@ client.on('ready', () => {
 	const chanGen=client.channels.cache.get("690970175956189209");
 	const chanTest=client.channels.cache.get("692075989026734090");
 	//wipeChan(chanPoints);
-	if(chanPoints.lastMessage==null){
+	if(chanPoints.lastMessage()==null){
 		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 	}
 });
@@ -45,8 +45,11 @@ function addPoints(bot,id,username,nb,chan){
 		chan.fetchMessages().then(msgs => { // Get messages to check
 			var msgEdit = msgs.filter(msgss => msgss.content.contains('"id" : "'+id+'"')) // Finds all messages with 'check'
 			parseMsg(msgEdit).scores.points+=nb;
-			msgEdit.edit(jsonForm) // Deletes all messages that got found
-			console.log(jsonForm);
+			if(msgEdit!=null){
+
+			msgEdit.edit(jsonForm);
+			}
+				console.log(jsonForm);
 		});	
 	}
 }
