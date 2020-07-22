@@ -46,17 +46,16 @@ function addPoints(bot,id,username,nb,chan){
 	if(!bot){
 
 		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
-		chan.messages.fetch().then(msgs => { // Get messages to check
-			var msgEdit={};
-			if(msgs.content.includes('{"id" : ")'+id)){
-				msgEdit=msgs;
+
+		chan.messages.fetch().then(message => {
+			if(message.content.includes("id")){
+
+				console.log(message.content);
 			}
-			parseMsg(msgEdit).scores.points+=nb;
-			if(msgEdit!=null){
-				msgEdit.edit(jsonForm);
-			}
-			console.log(jsonForm);
-		}).catch(error => console.log(error));	
+		}).catch(error =>{
+			console.error(error);
+			chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
+		});
 	}
 }
 
