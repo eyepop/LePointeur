@@ -13,9 +13,7 @@ client.on('ready', () => {
 		}));
 	}catch(error){
 		console.log(error);
-		if(countMessages(chanPoints)==0){
-			chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
-		}
+		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 	}
 
 });
