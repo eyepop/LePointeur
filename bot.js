@@ -9,7 +9,7 @@ client.on('ready', () => {
 	wipeChan(chanPoints);
 	console.log("empty "+chanPoints.messages.cache.some());
 	if(chanPoints.lastMessage==null){
-		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
+	//	chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 	}
 });
 
