@@ -25,8 +25,11 @@ client.on('message', msg => {
 	if (msg.content.startsWith('!score ')) {
 
 		var m=msg.content.split(" ");
-		if(m[1].startsWith("<!@")){
-			
+		if(m.length>1){
+			if(m[1].startsWith("<!@")){
+				var id=m[1].replace("<","").replace(">","").replace("@","").replace("!","");	
+				getPoints(id,msg)			
+			}
 		}
 	}
 
