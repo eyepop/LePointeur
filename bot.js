@@ -7,17 +7,14 @@ client.on('ready', () => {
 	const chanTest=client.channels.cache.get("692075989026734090");
 	//wipeChan(chanPoints);
 	console.log("C'est parti !!!");
-	try{
-		console.log(chanPoints.messages.fetch({ limit: 1 }).then(message => {
-			console.log(message.get(chanPoints.lastMessageID).content);
-		}).catch(error){
-			console.error(error);
-		});
-	}catch(error){
-		console.log(error);
+	console.log(chanPoints.messages.fetch({ limit: 1 }).then(message => {
+		console.log(message.get(chanPoints.lastMessageID).content);
+	}).catch(error){
+		console.error(error);
 		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
-		console.log("okay ?");
-	}
+	});
+	console.log("okay ?");
+}
 
 });
 
