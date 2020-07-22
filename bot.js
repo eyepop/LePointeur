@@ -21,6 +21,15 @@ var nb=0.0;
 var dest="";
 client.on('message', msg => {
 	const chanPoints=client.channels.cache.get("735193960783413351");
+
+	if (msg.content.startsWith('!score ')) {
+
+		var m=msg.content.split(" ");
+		if(m[1].startsWith("<!@")){
+			
+		}
+	}
+
 	if (msg.content.startsWith('!donne ')) {
 		var m=msg.content.split(" ");
 		for(var i=0;i<m.length;i++){
@@ -43,6 +52,19 @@ client.on('message', msg => {
 });
 
 
+
+function getPoints(id,msg){
+	var msgEdit;
+	chan.messages.fetch().then(messages => {
+		messages.forEach(function(message){
+			if(message.content.includes('{"id" : "'+id+'",')){
+				msg.reply(parseJson(message).scores['points']+" pts");
+			}
+		}
+		);
+	});
+
+}
 function addPoints(bot,id,username,nb,chan){
 	var d=nb;
 	var usernm=username;
