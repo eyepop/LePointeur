@@ -47,14 +47,15 @@ function addPoints(bot,id,username,nb,chan){
 
 		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
 
-		chan.messages.fetch().then(message => {
-			if(message.content.includes("id")){
-
-				console.log(message.content);
-			}
-		}).catch(error =>{
-			console.error(error);
-		});
+		chan.messages.fetch().then(messages => {
+				messages.forEach(function(message){ 
+					if(message.content.includes("id")){
+						console.log(message.content);
+					}
+				});
+			}).catch(error =>{
+				console.error(error);
+			});
 	}
 }
 
@@ -65,9 +66,6 @@ function initPoints(bot,id,username,nb,chan){
 	}
 }
 
-function countMessages(chan){
-
-}
 
 
 function userInChan(id,chan){
