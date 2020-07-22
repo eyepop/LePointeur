@@ -7,8 +7,8 @@ client.on('ready', () => {
 	const chanTest=client.channels.cache.get("692075989026734090");
 	//wipeChan(chanPoints);
 	try{
-		console.log(chan.messages.fetch({ limit: 1 }).then(message => {
-			console.log(message.get(chan.lastMessageID).content);
+		console.log(chanPoints.messages.fetch({ limit: 1 }).then(message => {
+			console.log(message.get(chanPoints.lastMessageID).content);
 		}));
 	}catch(error){
 		console.error(error);
