@@ -39,7 +39,7 @@ client.on('message', msg => {
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 function addPoints(bot,id,username,nb,chan){
-	if(!bot && userInChan(id,chan)){
+	if(!bot){
 
 		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
 		chan.fetchMessages().then(msgs => { // Get messages to check
