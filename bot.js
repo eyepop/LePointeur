@@ -27,7 +27,7 @@ client.on('message', msg => {
 		var m=msg.content.split(" ");
 		if(m.length>1){
 			console.log(m[1]);
-			if(m[1].startsWith("<!@")){
+			if(m[1].startsWith("<@!")){
 				var id=m[1].replace("<","").replace(">","").replace("@","").replace("!","");	
 				getPoints(id,msg);			
 			}
