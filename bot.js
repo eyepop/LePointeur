@@ -63,11 +63,10 @@ function initPoints(bot,id,username,nb,chan){
 }
 
 function isChanEmpty(chan){
-	chan.fetchMessages().then(msgs => { // Get messages to check
-		if(msgs!=null){
-			return false;
-		}
-	});
+	var cpt=0;
+	channel.messages.fetch()
+		.then(messages => cpt++)
+		.catch(console.error);
 	return true;
 }
 
