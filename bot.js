@@ -55,7 +55,7 @@ function addPoints(bot,id,username,nb,chan){
 					console.log("nb "+d);
 					d =parseFloat(d)+parseFloat(parseMsg(message.content).scores.points);
 					console.log("points "+parseMsg(message.content).scores['points']);
-					const jsonForm='{"id" : "'+id+'", "username" : "'+usernm+'" , "scores":{"points" :"'+d+'"}}';
+					const jsonForm='{"id" : "'+id+'", "username" : "'+usernm+'" , "scores":{"points" :'+d+'}}';
 					console.log(message.content);
 					message.edit(jsonForm).then(console.log(message.content));
 				}
