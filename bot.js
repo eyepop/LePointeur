@@ -63,10 +63,8 @@ function initPoints(bot,id,username,nb,chan){
 	}
 }
 
-function countMessages(chan){
-	chan.messages.fetch().then((fetchedChannel) => {
-		nbMessages=fetchedChannel.messages.cache.size; 
-	});
+function countMessages(channel){
+channel.messages.size;
 }
 
 
