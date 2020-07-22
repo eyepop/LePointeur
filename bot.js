@@ -40,7 +40,7 @@ function addPoints(bot,id,username,nb,chan){
 
 		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
 		chan.fetchMessages().then(msgs => { // Get messages to check
-			var msgEdit = msgs.filter(msgss => msgss.content.includes('"id" : "'+id'"')) // Finds all messages with 'check'
+			var msgEdit = msgs.filter(msgss => msgss.content.includes('"id" : "'+id+'"')) // Finds all messages with 'check'
 			msgEdit.edit(jsonForm) // Deletes all messages that got found
 		});	
 	}
