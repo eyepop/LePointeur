@@ -6,6 +6,7 @@ client.on('ready', () => {
 	const chanGen=client.channels.cache.get("690970175956189209");
 	const chanTest=client.channels.cache.get("692075989026734090");
 	//wipeChan(chanPoints);
+	console.log("C'est parti !!!");
 	try{
 		console.log(chanPoints.messages.fetch({ limit: 1 }).then(message => {
 			console.log(message.get(chanPoints.lastMessageID).content);
