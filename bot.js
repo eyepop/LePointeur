@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+var nbMessages=0;
 client.on('ready', () => {
 	//client.channels.cache.forEach(logMapElements);
 	const chanPoints=client.channels.cache.get("735193960783413351");
@@ -63,11 +64,9 @@ function initPoints(bot,id,username,nb,chan){
 }
 
 function countMessages(chan){
-	var nbMessages=0;
 	chan.messages.fetch().then((fetchedChannel) => {
 		nbMessages=fetchedChannel.messages.size; 
 	});
-	return nbMessages;
 }
 
 
