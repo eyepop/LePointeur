@@ -50,14 +50,14 @@ function addPoints(bot,id,username,nb,chan){
 		chan.messages.fetch().then(messages => {
 			messages.forEach(function(message){ 
 				if(message.content.includes('{"id" : "'+id+'",')){
-					msgEdit=message;
-					console.log(msgEdit.content);
+					console.log(message.content);
+					message.edit(jsonForm);
+					console.log(message.content);
 				}
 			});
 		}).catch(error =>{
 			console.error(error);
 		});
-		msgEdit.edit(jsonForm);
 
 	}
 }
