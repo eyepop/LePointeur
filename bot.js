@@ -37,7 +37,7 @@ client.on('message', msg => {
 		}
 		var id=dest.replace("<","").replace(">","").replace("@","").replace("!","");
 		msg.reply(nb+"->"+dest.replace("<","").replace(">","").replace("@","").replace("!",""));
-		console.log(client.users.cache.get(id));
+		console.log(nb);
 		addPoints(msg.author.bot,id,client.users.cache.get(id).username,nb,chanPoints);
 	}
 });
