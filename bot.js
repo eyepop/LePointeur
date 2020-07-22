@@ -1,15 +1,13 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var nbMessages=0;
 client.on('ready', () => {
 	//client.channels.cache.forEach(logMapElements);
 	const chanPoints=client.channels.cache.get("735193960783413351");
 	const chanGen=client.channels.cache.get("690970175956189209");
 	const chanTest=client.channels.cache.get("692075989026734090");
 	//wipeChan(chanPoints);
-	countMessages(chanPoints);
-	console.log(nbMessages);
-	if(nbMessages==0){
+	
+	if(countMessages(chanPoints)==0){
 		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 	}
 });
@@ -64,7 +62,7 @@ function initPoints(bot,id,username,nb,chan){
 }
 
 function countMessages(channel){
-	channel.messages.size;
+	return channel.messages.size;
 }
 
 
