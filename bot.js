@@ -14,7 +14,7 @@ client.on('message', msg => {
 	var dest="";
 	var nb=0.0;
 	if (msg.content.startsWith('!donne ')) {
-		var m=msg.split(" ");
+		var m=msg.content.split(" ");
 		for(var i=0;i<m.length;i++){
 			if(m[i]==="à"||m[i]==="a"){
 				if(i+1<m.length){
