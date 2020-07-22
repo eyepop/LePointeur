@@ -49,7 +49,7 @@ function addPoints(bot,id,username,nb,chan){
 
 		chan.messages.fetch().then(messages => {
 			messages.forEach(function(message){ 
-				if(message.content.includes('{"id" : "'+id+'",")){
+				if(message.content.includes('{"id" : "'+id+',')){
 					console.log(message.content);
 				}
 			});
