@@ -14,7 +14,6 @@ client.on('ready', () => {
 		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 	});
 	console.log("okay ?");
-}
 
 });
 
