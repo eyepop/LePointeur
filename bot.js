@@ -29,7 +29,6 @@ client.on('message', msg => {
 		}
 		var id=dest.replace("<","").replace(">","").replace("@","").replace("!","");
 		msg.reply(nb+"->"+dest.replace("<","").replace(">","").replace("@","").replace("!",""));
-		console.log(nb+"->"+dest.replace("/[<!>]/gi",""));
 		addPoints(msg.author.bot,id,client.fetchUser(id).username,nb,chanPoints);
 	}
 });
@@ -40,7 +39,10 @@ function addPoints(bot,id,username,nb,chan){
 	if(!bot && userInChan(id,chan)){
 
 		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
-		chan.send(jsonForm);
+		chan.fetchMessages().then(msgs => { // Get messages to check
+			var msgEdit = msgs.filter(msgss => msgss.content.includes('"id" : "'+id'"')) // Finds all messages with 'check'
+			msgEdit.edit(jsonForm) // Deletes all messages that got found
+		});	
 	}
 }
 
