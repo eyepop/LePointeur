@@ -44,6 +44,7 @@ function addPoints(bot,id,username,nb,chan){
 			var msgEdit = msgs.filter(msgss => msgss.content.includes('"id" : "'+id+'"')) // Finds all messages with 'check'
 			parseMsg(msgEdit).scores.points+=nb;
 			msgEdit.edit(jsonForm) // Deletes all messages that got found
+			console.log(jsonForm);
 		});	
 	}
 }
