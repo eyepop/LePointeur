@@ -64,7 +64,7 @@ function userInChan(id,chan){
 function parseMsg(msg){
 
 	//return JSON.parse(msg);
-	return JSON.parse(jsonex);
+	return JSON.parse(msg);
 }
 
 function wipeChan(chan){
