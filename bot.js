@@ -45,11 +45,12 @@ client.on('message', msg => {
 function addPoints(bot,id,username,nb,chan){
 	if(!bot){
 
-		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
 		var msgEdit;
 		chan.messages.fetch().then(messages => {
 			messages.forEach(function(message){ 
 				if(message.content.includes('{"id" : "'+id+'",')){
+					var nb =nb+parseMsg(message.content).scores.points;
+					const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
 					console.log(message.content);
 					message.edit(jsonForm);
 					console.log(message.content);
