@@ -64,7 +64,7 @@ function countMessages(chan){
 	var a=0;
 	chan.messages.fetch()
 		.then(messages => {
-			messages.forEach(msg => chan.send(msg.content+(a++)));
+			messages.forEach(msg => console.log(msg.content+(a++)));
 		});
 	console.log(a);
 	return a;
