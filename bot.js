@@ -28,7 +28,7 @@ client.on('message', msg => {
 			}
 		}
 	}
-	msg.reply(nb+"->"+dest);
+	//msg.reply(nb+"->"+dest);
 });
 
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
