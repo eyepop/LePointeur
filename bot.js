@@ -45,6 +45,7 @@ client.on('message', msg => {
 
 function addPoints(bot,id,username,nb,chan){
 	var d=nb;
+	var usernm=username;
 	if(!bot){
 
 		var msgEdit;
@@ -52,11 +53,11 @@ function addPoints(bot,id,username,nb,chan){
 			messages.forEach(function(message){ 
 				if(message.content.includes('{"id" : "'+id+'",')){
 					console.log("nb "+d);
-					var nb =nb+parseFloat(parseMsg(message.content).scores.points);
+					d =d+parseFloat(parseMsg(message.content).scores.points);
 					console.log("points "+parseMsg(message.content).scores['points']);
-					const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :"'+nb+'"}}';
+					const jsonForm='{"id" : "'+id+'", "username" : "'+usernm+'" , "scores":{"points" :"'+d+'"}}';
 					console.log(message.content);
-					//message.edit(jsonForm).then(console.log(message.content));
+					message.edit(jsonForm).then(console.log(message.content));
 				}
 			});
 		}).catch(error =>{
