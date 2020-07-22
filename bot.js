@@ -67,6 +67,7 @@ function countMessages(chan){
 		.then(messages => {
 			messages.forEach(msg => a++);
 		});
+	console.log(a);
 	return a;
 }
 
