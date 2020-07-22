@@ -7,7 +7,7 @@ client.on('ready', () => {
 	const chanGen=client.channels.cache.get("690970175956189209");
 	const chanTest=client.channels.cache.get("692075989026734090");
 	//wipeChan(chanPoints);
-	console.log("length "+chanPoints.messages.cache.length);
+	console.log("length "+chanPoints.messages.cache.array.length);
 	if(chanPoints.lastMessage==null){
 		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 	}
@@ -61,6 +61,11 @@ function initPoints(bot,id,username,nb,chan){
 		chan.send(jsonForm);
 	}
 }
+
+function isChanEmpty(chan){
+	
+}
+
 
 function userInChan(id,chan){
 	var isUserInChan=false;
