@@ -19,10 +19,21 @@ client.on('ready', () => {
 
 var nb=0.0;
 var dest="";
+
+function triangleChecker(content){
+	const verbes=["dérobe","vole","prend","pique"];
+	for(var i=0;i<verbes.length;i++){
+		if(content.includes(verbes[i]) && content.includes("triangle")){
+			return true;
+		}
+	}
+	return false;
+}
 client.on('message', msg => {
+
 	const chanPoints=client.channels.cache.get("735193960783413351");
 	if(msg.author.id === "231883809052688395"|| msg.author.id === "172348173166051328"){
-		if(msg.content.includes("vole") && msg.content.includes("triangle de")){
+		if(triangleChecker(msg.content)){
 			msg.reply("tu as commis un crime ! Tu dois répondre de tes actes auprès du grand conseil des Triangles ...");
 		}
 	}
@@ -59,9 +70,9 @@ client.on('message', msg => {
 			var usr=client.users.cache.get(id);
 			if (usr!=undefined){
 				console.log(usr.username);
-			addPoints(msg.author.bot,id,usr.username,nb,chanPoints);
-			reply(msg,""+nb+" points pour "+username);
-			//getPoints(chanPoints,id,msg);
+				addPoints(msg.author.bot,id,usr.username,nb,chanPoints);
+				reply(msg,""+nb+" points pour "+username);
+				//getPoints(chanPoints,id,msg);
 			}
 		}else{
 			msg.reply("ah bah non en fait ...");
