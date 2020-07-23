@@ -32,7 +32,7 @@ function triangleChecker(content){
 client.on('message', msg => {
 
 	const chanPoints=client.channels.cache.get("735193960783413351");
-	if(msg.author.id === "231883809052688395"|| msg.author.id === "172348173166051328"){
+	if(msg.author.id === "231883809052688395"|| msg.author.id === "17 2348173166051328"){
 		if(triangleChecker(msg.content)){
 			msg.reply("tu as commis un crime ! Tu dois répondre de tes actes auprès du grand conseil des Triangles ...");
 		}
