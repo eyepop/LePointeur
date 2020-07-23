@@ -10,7 +10,7 @@ client.on('ready', () => {
 	chanPoints.messages.fetch({ limit: 1 }).then(message => {
 		console.log(message.get(chanPoints.lastMessageID).content);
 	}).catch(error =>{
-		console.error(error);
+		console.log(error);
 		chanGen.members.forEach(member => initPoints(member.user.bot,member.id,member.user.username,0,chanPoints));
 	});
 	console.log("okay ?");
@@ -115,7 +115,7 @@ function addPoints(bot,id,username,nb,chan){
 				}
 			});
 		}).catch(error =>{
-			console.error(error);
+			console.log(error);
 		});
 
 
