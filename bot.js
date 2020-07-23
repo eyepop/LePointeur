@@ -33,9 +33,9 @@ client.on('message', msg => {
 		}
 	}
 	let allowedRole = msg.guild.roles.cache.find(r => r.name === "License To Point");
-	if(msg.member.roles.cache.has(allowedRole.id)){
 
-		if (msg.content.startsWith('!donne ')) {
+	if (msg.content.startsWith('!donne ')) {
+		if(msg.member.roles.cache.has(allowedRole.id)){
 			var m=msg.content.split(" ");
 			for(var i=0;i<m.length;i++){
 				if(m[i]==="à"||m[i]==="a"){
@@ -54,10 +54,10 @@ client.on('message', msg => {
 			console.log(client.users.cache.get(id).username);
 			addPoints(msg.author.bot,id,client.users.cache.get(id).username,nb,chanPoints);
 			getPoints(chanPoints,id,msg);
-		} 
-	}else{
-		//msg.reply("ah bah non en fait ...");
-	}
+		}else{
+			msg.reply("ah bah non en fait ...");
+		}
+	} 
 });
 
 
