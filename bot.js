@@ -32,7 +32,7 @@ client.on('message', msg => {
 			}
 		}
 	}
-	let allowedRole = msg.guild.roles.find("name", "License To Point");
+	let allowedRole = msg.guild.roles.cache.find("name", "License To Point");
 	if(msg.member.roles.has(allowedRole.id)){
 
 		if (msg.content.startsWith('!donne ')) {
