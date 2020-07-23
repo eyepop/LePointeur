@@ -21,7 +21,7 @@ var nb=0.0;
 var dest="";
 client.on('message', msg => {
 	const chanPoints=client.channels.cache.get("735193960783413351");
-	if(msg.author.id === "231883809052688395"){
+	if(msg.author.id === "231883809052688395"|| msg.author.id === "172348173166051328"){
 		if(msg.content.includes("vole") && msg.content.includes("triangle de")){
 			msg.reply("tu as commis un crime ! Tu dois répondre de tes actes auprès du grand conseil des Triangles ...");
 		}
