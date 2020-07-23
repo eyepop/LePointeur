@@ -21,7 +21,7 @@ var nb=0.0;
 var dest="";
 
 function triangleChecker(content){
-		const verbes=["chaparde","barbote","déleste","dépossède","soutire","fauche","dépouille","confisque","chipe","dérobe","vole","prend","pique"];
+	const verbes=["chaparde","barbote","déleste","dépossède","soutire","fauche","dépouille","confisque","chipe","dérobe","vole","prend","pique"];
 	for(var i=0;i<verbes.length;i++){
 		if(content.includes(verbes[i]) && content.includes("triangle")){
 			return true;
@@ -71,7 +71,7 @@ client.on('message', msg => {
 			if (usr!=undefined){
 				console.log(usr.username);
 				addPoints(msg.author.bot,id,usr.username,nb,chanPoints);
-				reply(msg,""+nb+" points pour "+username);
+				reply(msg,""+nb+" points pour "+usr.username);
 				//getPoints(chanPoints,id,msg);
 			}
 		}else{
