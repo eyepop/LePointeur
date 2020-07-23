@@ -55,6 +55,8 @@ client.on('message', msg => {
 			addPoints(msg.author.bot,id,client.users.cache.get(id).username,nb,chanPoints);
 			getPoints(chanPoints,id,msg);
 		} 
+	}else{
+		msg.reply("ah bah non en fait ...");
 	}
 });
 
