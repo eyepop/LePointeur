@@ -90,7 +90,7 @@ function getPoints(chan,id,msg){
 	chan.messages.fetch().then(messages => {
 		messages.forEach(function(message){
 			if(message.content.includes('{"id" : "'+id+'",')){
-				msg.reply(parseMsg(message).scores['points']+" pts");
+				reply(parseMsg(message).username+" : "+parseMsg(message).scores['points']+" pts");
 			}
 		}
 		);
