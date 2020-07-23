@@ -21,7 +21,7 @@ var nb=0.0;
 var dest="";
 
 function triangleChecker(content){
-		const verbes=["barbote","déleste","dépossède","soutire","fauche","dépouille","confisque","chipe","dérobe","vole","prend","pique"];
+		const verbes=["chaparde","barbote","déleste","dépossède","soutire","fauche","dépouille","confisque","chipe","dérobe","vole","prend","pique"];
 	for(var i=0;i<verbes.length;i++){
 		if(content.includes(verbes[i]) && content.includes("triangle")){
 			return true;
