@@ -54,9 +54,9 @@ client.on('message', msg => {
 			var usr=client.users.cache.get(id);
 			if (usr!=undefined){
 				console.log(usr.username);
-			}
-			addPoints(msg.author.bot,id,client.users.cache.get(id).username,nb,chanPoints);
+			addPoints(msg.author.bot,id,usr.username,nb,chanPoints);
 			getPoints(chanPoints,id,msg);
+			}
 		}else{
 			msg.reply("ah bah non en fait ...");
 		}
