@@ -56,7 +56,7 @@ client.on('message', msg => {
 			getPoints(chanPoints,id,msg);
 		} 
 	}else{
-		msg.reply("ah bah non en fait ...");
+		//msg.reply("ah bah non en fait ...");
 	}
 });
 
