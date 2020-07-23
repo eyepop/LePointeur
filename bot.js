@@ -32,7 +32,7 @@ client.on('message', msg => {
 			}
 		}
 	}
-	let allowedRole = msg.guild.roles.cache.find("name", "License To Point");
+	let allowedRole = msg.guild.roles.cache.find(r => r.name === "License To Point");
 	if(msg.member.roles.has(allowedRole.id)){
 
 		if (msg.content.startsWith('!donne ')) {
@@ -62,82 +62,82 @@ client.on('message', msg => {
 
 
 
-	function getPoints(chan,id,msg){
+function getPoints(chan,id,msg){
+	var msgEdit;
+	chan.messages.fetch().then(messages => {
+		messages.forEach(function(message){
+			if(message.content.includes('{"id" : "'+id+'",')){
+				msg.reply(parseMsg(message).scores['points']+" pts");
+			}
+		}
+		);
+	});
+
+}
+function addPoints(bot,id,username,nb,chan){
+	var d=nb;
+	var usernm=username;
+	if(!bot){
+
 		var msgEdit;
 		chan.messages.fetch().then(messages => {
-			messages.forEach(function(message){
+			messages.forEach(function(message){ 
 				if(message.content.includes('{"id" : "'+id+'",')){
-					msg.reply(parseMsg(message).scores['points']+" pts");
+					console.log("nb "+d);
+					d =parseFloat(d)+parseFloat(parseMsg(message.content).scores.points);
+					console.log("points "+parseMsg(message.content).scores['points']);
+					const jsonForm='{"id" : "'+id+'", "username" : "'+usernm+'" , "scores":{"points" :'+d+'}}';
+					console.log(message.content);
+					message.edit(jsonForm).then(console.log(message.content));
 				}
-			}
-			);
+			});
+		}).catch(error =>{
+			console.error(error);
 		});
 
-	}
-	function addPoints(bot,id,username,nb,chan){
-		var d=nb;
-		var usernm=username;
-		if(!bot){
 
-			var msgEdit;
-			chan.messages.fetch().then(messages => {
-				messages.forEach(function(message){ 
-					if(message.content.includes('{"id" : "'+id+'",')){
-						console.log("nb "+d);
-						d =parseFloat(d)+parseFloat(parseMsg(message.content).scores.points);
-						console.log("points "+parseMsg(message.content).scores['points']);
-						const jsonForm='{"id" : "'+id+'", "username" : "'+usernm+'" , "scores":{"points" :'+d+'}}';
-						console.log(message.content);
-						message.edit(jsonForm).then(console.log(message.content));
-					}
-				});
-			}).catch(error =>{
-				console.error(error);
+	}
+}
+
+function initPoints(bot,id,username,nb,chan){
+	if(!bot && !userInChan(id,chan)){
+		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
+		chan.send(jsonForm);
+	}
+}
+
+
+
+function userInChan(id,chan){
+	var isUserInChan=false;
+	chan.messages.fetch()
+		.then(messages => {
+			messages.forEach(function(msg){ 
+				if(!isUserInChan){
+					isUserInChan=(parseMsg(msg).id===id);
+				}
 			});
+		});
+	return isUserInChan;
+}
 
 
-		}
-	}
+function parseMsg(msg){
 
-	function initPoints(bot,id,username,nb,chan){
-		if(!bot && !userInChan(id,chan)){
-			const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
-			chan.send(jsonForm);
-		}
-	}
+	//return JSON.parse(msg);
+	return JSON.parse(msg);
+}
 
+function wipeChan(chan){
 
+	chan.messages.fetch()
+		.then(messages => {
+			messages.forEach(msg => msg.delete());
+		});
 
-	function userInChan(id,chan){
-		var isUserInChan=false;
-		chan.messages.fetch()
-			.then(messages => {
-				messages.forEach(function(msg){ 
-					if(!isUserInChan){
-						isUserInChan=(parseMsg(msg).id===id);
-					}
-				});
-			});
-		return isUserInChan;
-	}
+}
 
-
-	function parseMsg(msg){
-
-		//return JSON.parse(msg);
-		return JSON.parse(msg);
-	}
-
-	function wipeChan(chan){
-
-		chan.messages.fetch()
-			.then(messages => {
-				messages.forEach(msg => msg.delete());
-			});
-
-	}
-
-	function logMapElements(value, key, map) {
-		console.log('m['+key+'] = '+value);
-	}
-	client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
+function logMapElements(value, key, map) {
+	console.log('m['+key+'] = '+value);
+}
+client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
