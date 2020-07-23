@@ -55,7 +55,8 @@ client.on('message', msg => {
 			if (usr!=undefined){
 				console.log(usr.username);
 			addPoints(msg.author.bot,id,usr.username,nb,chanPoints);
-			getPoints(chanPoints,id,msg);
+			reply(msg,"ta mère ...");
+			//getPoints(chanPoints,id,msg);
 			}
 		}else{
 			msg.reply("ah bah non en fait ...");
@@ -63,6 +64,9 @@ client.on('message', msg => {
 	} 
 });
 
+function reply(msg,str){
+	msg.channel.send(str);
+}
 
 
 function getPoints(chan,id,msg){
