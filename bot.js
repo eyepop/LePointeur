@@ -124,7 +124,7 @@ function addPoints(bot,id,username,nb,chan){
 
 function initPoints(bot,id,username,nb,chan){
 	if(!bot && !userInChan(id,chan)){
-		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
+		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+',"triangle":1}}';
 		chan.send(jsonForm);
 	}
 }
