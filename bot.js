@@ -21,7 +21,6 @@ var nb=0.0;
 var dest="";
 client.on('message', msg => {
 	const chanPoints=client.channels.cache.get("735193960783413351");
-
 	if (msg.content.startsWith('!score ')) {
 
 		var m=msg.content.split(" ");
@@ -33,107 +32,110 @@ client.on('message', msg => {
 			}
 		}
 	}
+	let allowedRole = msg.guild.roles.find("name", "License To Point");
+	if(msg.member.roles.has(allowedRole.id){
 
-	if (msg.content.startsWith('!donne ')) {
-		var m=msg.content.split(" ");
-		for(var i=0;i<m.length;i++){
-			if(m[i]==="à"||m[i]==="a"){
-				if(i+1<m.length){
-					dest=m[i+1];
+		if (msg.content.startsWith('!donne ')) {
+			var m=msg.content.split(" ");
+			for(var i=0;i<m.length;i++){
+				if(m[i]==="à"||m[i]==="a"){
+					if(i+1<m.length){
+						dest=m[i+1];
+					}
+				}
+				if(m[i]==="points"||m[i]==="pts"){
+					if(i-1>0){
+						nb=m[i-1];
+					}
 				}
 			}
-			if(m[i]==="points"||m[i]==="pts"){
-				if(i-1>0){
-					nb=m[i-1];
-				}
-			}
-		}
-		var id=dest.replace("<","").replace(">","").replace("@","").replace("!","");
-		//msg.reply(nb+"->"+dest.replace("<","").replace(">","").replace("@","").replace("!",""));
-		console.log(client.users.cache.get(id).username);
-		addPoints(msg.author.bot,id,client.users.cache.get(id).username,nb,chanPoints);
-		getPoints(chanPoints,id,msg);
+			var id=dest.replace("<","").replace(">","").replace("@","").replace("!","");
+			//msg.reply(nb+"->"+dest.replace("<","").replace(">","").replace("@","").replace("!",""));
+			console.log(client.users.cache.get(id).username);
+			addPoints(msg.author.bot,id,client.users.cache.get(id).username,nb,chanPoints);
+			getPoints(chanPoints,id,msg);
+		} 
 	}
 });
 
 
 
-function getPoints(chan,id,msg){
-	var msgEdit;
-	chan.messages.fetch().then(messages => {
-		messages.forEach(function(message){
-			if(message.content.includes('{"id" : "'+id+'",')){
-				msg.reply(parseMsg(message).scores['points']+" pts");
-			}
-		}
-		);
-	});
-
-}
-function addPoints(bot,id,username,nb,chan){
-	var d=nb;
-	var usernm=username;
-	if(!bot){
-
+	function getPoints(chan,id,msg){
 		var msgEdit;
 		chan.messages.fetch().then(messages => {
-			messages.forEach(function(message){ 
+			messages.forEach(function(message){
 				if(message.content.includes('{"id" : "'+id+'",')){
-					console.log("nb "+d);
-					d =parseFloat(d)+parseFloat(parseMsg(message.content).scores.points);
-					console.log("points "+parseMsg(message.content).scores['points']);
-					const jsonForm='{"id" : "'+id+'", "username" : "'+usernm+'" , "scores":{"points" :'+d+'}}';
-					console.log(message.content);
-					message.edit(jsonForm).then(console.log(message.content));
+					msg.reply(parseMsg(message).scores['points']+" pts");
 				}
-			});
-		}).catch(error =>{
-			console.error(error);
+			}
+			);
 		});
-
 
 	}
-}
+	function addPoints(bot,id,username,nb,chan){
+		var d=nb;
+		var usernm=username;
+		if(!bot){
 
-function initPoints(bot,id,username,nb,chan){
-	if(!bot && !userInChan(id,chan)){
-		const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
-		chan.send(jsonForm);
-	}
-}
-
-
-
-function userInChan(id,chan){
-	var isUserInChan=false;
-	chan.messages.fetch()
-		.then(messages => {
-			messages.forEach(function(msg){ 
-				if(!isUserInChan){
-					isUserInChan=(parseMsg(msg).id===id);
-				}
+			var msgEdit;
+			chan.messages.fetch().then(messages => {
+				messages.forEach(function(message){ 
+					if(message.content.includes('{"id" : "'+id+'",')){
+						console.log("nb "+d);
+						d =parseFloat(d)+parseFloat(parseMsg(message.content).scores.points);
+						console.log("points "+parseMsg(message.content).scores['points']);
+						const jsonForm='{"id" : "'+id+'", "username" : "'+usernm+'" , "scores":{"points" :'+d+'}}';
+						console.log(message.content);
+						message.edit(jsonForm).then(console.log(message.content));
+					}
+				});
+			}).catch(error =>{
+				console.error(error);
 			});
-		});
-	return isUserInChan;
-}
 
 
-function parseMsg(msg){
+		}
+	}
 
-	//return JSON.parse(msg);
-	return JSON.parse(msg);
-}
+	function initPoints(bot,id,username,nb,chan){
+		if(!bot && !userInChan(id,chan)){
+			const jsonForm='{"id" : "'+id+'", "username" : "'+username+'" , "scores":{"points" :'+nb+'}}';
+			chan.send(jsonForm);
+		}
+	}
 
-function wipeChan(chan){
 
-	chan.messages.fetch()
-		.then(messages => {
-			messages.forEach(msg => msg.delete());
-		});
 
-}
+	function userInChan(id,chan){
+		var isUserInChan=false;
+		chan.messages.fetch()
+			.then(messages => {
+				messages.forEach(function(msg){ 
+					if(!isUserInChan){
+						isUserInChan=(parseMsg(msg).id===id);
+					}
+				});
+			});
+		return isUserInChan;
+	}
 
-function logMapElements(value, key, map) {
-	console.log('m['+key+'] = '+value);
-}
-client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
+
+	function parseMsg(msg){
+
+		//return JSON.parse(msg);
+		return JSON.parse(msg);
+	}
+
+	function wipeChan(chan){
+
+		chan.messages.fetch()
+			.then(messages => {
+				messages.forEach(msg => msg.delete());
+			});
+
+	}
+
+	function logMapElements(value, key, map) {
+		console.log('m['+key+'] = '+value);
+	}
+	client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
