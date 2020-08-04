@@ -106,11 +106,14 @@ async function clear(id,channel) {
 
 async function selectRandomHalf(channel,halfIDs){
 	console.log(channel);
-	await channel.messages.fetch({limit:100}).then(msg =>{
-		console.log(msg.id+" : "+msg.content);
-		if(getRandomInt(2)==0){
-			halfIDs.push(msg.id);
-		};
+	await channel.messages.fetch({limit:100}).then(msgs =>{
+		msgs.forEach(msg=>{
+
+			console.log(msg.id+" : "+msg.content);
+			if(getRandomInt(2)==0){
+				halfIDs.push(msg.id);
+			};
+		});
 	});	
 }
 
