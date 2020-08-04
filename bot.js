@@ -92,7 +92,7 @@ function reply(msg,str){
 }
 
 async function clear(id,channel) {
-	var message=channel.messages.fetch(id);
+	var message=channel.messages.get(id);
 	await message.delete();
 	return("suppression ?");
 }
