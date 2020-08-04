@@ -92,8 +92,10 @@ function reply(msg,str){
 }
 
 async function clear(id,channel) {
-	var message=channel.messages.fetch(id).then(
-	await msg=>{msg.delete();});
+	var message=channel.messages.fetch(id)
+		.then(await msg=>{
+			msg.delete();
+		});
 	return("suppression ?");
 }
 
@@ -108,7 +110,7 @@ async function selectRandomHalf(channel){
 }
 
 function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+	return Math.floor(Math.random() * Math.floor(max));
 }
 function getPoints(chan,id,msg){
 	var msgEdit;
