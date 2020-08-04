@@ -37,7 +37,7 @@ client.on('message', async msg => {
 			msg.reply("tu as commis un crime ! Tu dois répondre de tes actes auprès du grand conseil des Triangles ...");
 		}
 	}
-	if (msg.content.startsWith('!snap ')) {
+	if (msg.content === '!snap') {
 		var halfIDs=[];
 		await selectRandomHalf(msg.channel,halfIDs);
 		console.log(halfIDs.length);
