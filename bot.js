@@ -38,7 +38,7 @@ client.on('message', msg => {
 		}
 	}
 	if (msg.content.startsWith('!clear ')) {
-		var args=msg.split(" ");
+		var args=msg.content.split(" ");
 		if(args.length>1){
 			msg.reply(clear(args[1]));
 		}
