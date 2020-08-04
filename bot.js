@@ -109,7 +109,7 @@ async function selectRandomHalf(channel,halfIDs){
 			await halfIDs.push(msg.id);
 		};
 	});	
-	return halfIDs;
+	return halfIDs.length;
 }
 
 function getRandomInt(max) {
