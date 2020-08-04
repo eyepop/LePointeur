@@ -39,7 +39,8 @@ client.on('message', async msg => {
 	}
 	if (msg.content.startsWith('!snap ')) {
 		var halfIDs=[];
-		await console.log(selectRandomHalf(msg.channel,halfIDs));
+		await selectRandomHalf(msg.channel,halfIDs);
+		console.log(halfIDs.length);
 	}
 	if (msg.content.startsWith('!clear ')) {
 		var args=msg.content.split(" ");
@@ -111,7 +112,6 @@ async function selectRandomHalf(channel,halfIDs){
 			await halfIDs.push(msg.id);
 		};
 	});	
-	return halfIDs.length;
 }
 
 function getRandomInt(max) {
