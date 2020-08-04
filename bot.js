@@ -93,18 +93,23 @@ function reply(msg,str){
 
 async function clear(id,channel) {
 	var message=channel.messages.fetch(id);
-	message.delete();
+	await message.delete();
 	return("suppression ?");
 }
 
-function selectRandomHalf(channel){
+async function selectRandomHalf(channel){
 	halfIDs=[];
-	
-
-
+	channel.messages.fetch().then(async msg =>{
+		if(getRandomInt(2)==0){
+			await halfIDs.push(msg.id);
+		};
+	});	
+	return halfIDs;
 }
 
-
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 function getPoints(chan,id,msg){
 	var msgEdit;
 	chan.messages.fetch().then(messages => {
