@@ -37,6 +37,13 @@ client.on('message', msg => {
 			msg.reply("tu as commis un crime ! Tu dois répondre de tes actes auprès du grand conseil des Triangles ...");
 		}
 	}
+	if (msg.content.startsWith('!clear ')) {
+		var args=msg.split(" ");
+		if(args.length>1){
+			msg.reply(clear(args[1]));
+		}
+	}
+
 	if (msg.content.startsWith('!score ')) {
 
 		var m=msg.content.split(" ");
@@ -82,6 +89,19 @@ client.on('message', msg => {
 
 function reply(msg,str){
 	msg.channel.send(str);
+}
+
+async function clear(id) {
+	var message=message.channel.messages.fetch(id);
+	message.delete();
+	return("suppression ?");
+}
+
+function selectRandomHalf(channel){
+	halfIDs=[];
+	
+
+
 }
 
 
