@@ -39,7 +39,7 @@ client.on('message', msg => {
 	}
 	if (msg.content.startsWith('!snap ')) {
 		var halfIDs=[];
-		console.log(selectRandomHalf(msg.channel));
+		console.log(selectRandomHalf(msg.channel,halfIDs));
 	}
 	if (msg.content.startsWith('!clear ')) {
 		var args=msg.content.split(" ");
