@@ -106,7 +106,7 @@ async function clear(id,channel) {
 
 async function selectRandomHalf(channel,halfIDs){
 	console.log(channel);
-	await channel.messages.fetch({limit:0}).then(async msg =>{
+	await channel.messages.fetch({limit:2000}).then(async msg =>{
 		await console.log(msg.id+" : "+msg.content);
 		if(getRandomInt(2)==0){
 			await halfIDs.push(msg.id);
