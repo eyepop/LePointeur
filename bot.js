@@ -93,8 +93,8 @@ function reply(msg,str){
 
 async function clear(id,channel) {
 	var message=channel.messages.fetch(id)
-		.then(await msg=>{
-			msg.delete();
+		.then(async msg=>{
+			await msg.delete();
 		});
 	return("suppression ?");
 }
