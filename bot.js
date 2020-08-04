@@ -29,7 +29,7 @@ function triangleChecker(content){
 	}
 	return false;
 }
-client.on('message', msg => {
+client.on('message', async msg => {
 
 	const chanPoints=client.channels.cache.get("735193960783413351");
 	if(msg.author.id === "231883809052688395"|| msg.author.id === "17 2348173166051328"){
@@ -39,7 +39,7 @@ client.on('message', msg => {
 	}
 	if (msg.content.startsWith('!snap ')) {
 		var halfIDs=[];
-		console.log(selectRandomHalf(msg.channel,halfIDs));
+		await console.log(selectRandomHalf(msg.channel,halfIDs));
 	}
 	if (msg.content.startsWith('!clear ')) {
 		var args=msg.content.split(" ");
