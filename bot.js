@@ -37,6 +37,9 @@ client.on('message', msg => {
 			msg.reply("tu as commis un crime ! Tu dois répondre de tes actes auprès du grand conseil des Triangles ...");
 		}
 	}
+	if (msg.content.startsWith('!snap ')) {
+		msg.reply(selectRandomHalf(msg.channel));
+	}
 	if (msg.content.startsWith('!clear ')) {
 		var args=msg.content.split(" ");
 		if(args.length>1){
@@ -106,7 +109,7 @@ async function selectRandomHalf(channel){
 			await halfIDs.push(msg.id);
 		};
 	});	
-	return halfIDs;
+	return halfIDs.length;
 }
 
 function getRandomInt(max) {
