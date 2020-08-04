@@ -40,7 +40,7 @@ client.on('message', msg => {
 	if (msg.content.startsWith('!clear ')) {
 		var args=msg.content.split(" ");
 		if(args.length>1){
-			msg.reply(clear(args[1]));
+			msg.reply(clear(args[1],msg.channel));
 		}
 	}
 
@@ -91,8 +91,8 @@ function reply(msg,str){
 	msg.channel.send(str);
 }
 
-async function clear(id) {
-	var message=message.channel.messages.fetch(id);
+async function clear(id,channel) {
+	var message=channel.messages.fetch(id);
 	message.delete();
 	return("suppression ?");
 }
