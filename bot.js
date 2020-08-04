@@ -38,7 +38,8 @@ client.on('message', msg => {
 		}
 	}
 	if (msg.content.startsWith('!snap ')) {
-		msg.reply(selectRandomHalf(msg.channel));
+		var halfIDs=[];
+		console.log(selectRandomHalf(msg.channel));
 	}
 	if (msg.content.startsWith('!clear ')) {
 		var args=msg.content.split(" ");
@@ -102,8 +103,7 @@ async function clear(id,channel) {
 	return("suppression ?");
 }
 
-async function selectRandomHalf(channel){
-	halfIDs=[];
+async function selectRandomHalf(channel,halfIDs){
 	channel.messages.fetch().then(async msg =>{
 		if(getRandomInt(2)==0){
 			await halfIDs.push(msg.id);
